@@ -1,0 +1,119 @@
+:root {
+    --blue: rgb(80, 72, 229);
+    --hover-gray: rgba(80, 72, 229, 0.04);
+    --black: rgb(18, 24, 40);
+    --light-gray: rgb(230, 232, 240);
+    --white: #fff;
+    --gray: rgb(101, 116, 139);
+    --strong-blue: rgb(56, 50, 160);
+}
+
+* {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.back-svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.back-svg > svg {
+    fill: var(--blue);
+    font-weight: 600;
+}
+
+.back-sign-in-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+}
+
+.back-sign-in-button:hover {
+    background-color: var(--hover-gray);
+}
+
+.back-button-text {
+    width: 50px;
+    color: var(--blue);
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.header {
+    color: var(--black);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.form > input {
+    padding: 16px 14px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--light-gray);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form > input:focus {
+    outline: 2px solid var(--blue);
+    transition: 0.5s;
+}
+
+.sign-up-button {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding: 11px 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: var(--blue);
+    font-weight: 600;
+    color: var(--white);
+}
+
+.sign-up-button:hover {
+    background-color: var(--strong-blue);
+    transition: 0.5s;
+}
+
+.footer {
+    font-size: 0.875rem;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+.footer > a {
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.footer > a:hover {
+    text-decoration: underline;
+}

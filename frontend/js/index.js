@@ -14,7 +14,7 @@ signInButton.addEventListener("click", async (e) => {
             password: password
         }
 
-        const loginResponse = await fetch("http://127.0.0.1:5000/loginVerify", {
+        const loginResponse = await fetch(`${urlApi}/loginVerify`, {
             method: "POST",
             headers: {
                 "Accept": "application/json",
