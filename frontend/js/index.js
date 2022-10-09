@@ -39,6 +39,10 @@ signInButton.addEventListener("click", async (e) => {
         });
 
         if (loginResponse.status === 200) {
+            const jsonData = await loginResponse.json()
+
+            localStorage.setItem("token", jsonData.token);
+
             window.location = e.target.href;
         } else {
             flashMessage.innerHTML = "Login ou senha inválidos.";

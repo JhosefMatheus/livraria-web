@@ -30,3 +30,9 @@ class DBManager:
         db.session.add(user)
 
         db.session.commit()
+
+
+    def get_books(self):
+        books = Book.query.all()
+
+        return books
