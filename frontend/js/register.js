@@ -1,20 +1,28 @@
-const fName = document.getElementById("fname");
-const lName = document.getElementById("lname");
-const login = document.getElementById("login");
-const password = document.getElementById("password");
+const fNameInput = document.getElementById("fname");
+const lNameInput = document.getElementById("lname");
+const loginInput = document.getElementById("login");
+const passwordInput = document.getElementById("password");
 const signUpButton = document.getElementById("sign-up-button");
+const flash = document.querySelector(".flash");
+const flashMessage = document.querySelector(".flash-message");
 
 signUpButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    if (!fName || !lName || !login || !password) {
-        console.log("Um dos campos acima não foi preenchido, por favor preencha!");
-    } else {
-        const fNameValue = fName.value;
-        const lNameValue = lName.value;
-        const loginValue = login.value;
-        const passwordValue = password.value;
+    const fNameValue = fNameInput.value;
+    const lNameValue = lNameInput.value;
+    const loginValue = loginInput.value;
+    const passwordValue = passwordInput.value;
 
+    if (!fNameValue || !lNameValue || !loginValue || !passwordValue) {
+        flashMessage.innerHTML = "Um dos campos acima não foi preenchido, por favor preencha.";
+        flash.style.display = "block";
+
+        setTimeout(() => {
+            flashMessage.innerHTML = "";
+            flash.style.display = "none";
+        }, 5000);
+    } else {
         const jsonData = {
             firstName: fNameValue,
             lastName: lNameValue,
@@ -34,7 +42,15 @@ signUpButton.addEventListener("click", async (e) => {
         if (registerResponse.status === 200) {
             window.location = e.target.href;
         } else if (registerResponse.status === 403) {
-            registerResponse.json().then(data => console.log(data.message));
+            registerResponse.json().then(data => {
+                flashMessage.innerHTML = data.message;
+                flash.style.display = "block";
+
+                setTimeout(() => {
+                    flashMessage.innerHTML = "";
+                    flash.style.display = "none";
+                }, 5000);
+            });
         }
     }
 });

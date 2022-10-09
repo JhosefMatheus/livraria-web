@@ -44,6 +44,6 @@ def register():
 
             return make_response(jsonify({"message": "Registrado com sucesso!"}), 200)
 
-        return make_response(jsonify({"message": "Senha indisponível"}), 403)
+        return make_response(jsonify({"message": "Senha indisponível."}), 403)
 
-    return make_response(jsonify({"message": "Login indisponível"}), 403)
+    return make_response(jsonify({"message": "Login indisponível."}), 403)

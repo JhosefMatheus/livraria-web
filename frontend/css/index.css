@@ -4,6 +4,7 @@
     --blue: rgb(80, 72, 229);
     --strong-blue: rgb(56, 50, 160);
     --white: #fff;
+    --transparent-red: rgba(255, 0, 0, 0.8);
 }
 
 * {
@@ -35,6 +36,7 @@ html, body {
 .form > .header {
     font-size: 2rem;
     font-weight: 700;
+    margin: 10px 0;
 }
 
 .form > input {
@@ -42,7 +44,8 @@ html, body {
     width: 100%;
     padding: 16px 14px;
     border-radius: 8px;
-    border: 1px solid var(--light-gray);
+    border: none;
+    outline: 1px solid var(--light-gray);
     font-size: 1rem;
     font-weight: 400;
     box-sizing: border-box;
@@ -83,4 +86,17 @@ html, body {
 
 .form > .footer > .register-link:hover {
     text-decoration: underline;
+}
+
+.flash {
+    display: none;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--transparent-red);
+    box-sizing: border-box;
+    padding: 16px 11px;
+    border-radius: 8px;
+    font-weight: 600;
 }

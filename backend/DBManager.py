@@ -25,7 +25,7 @@ class DBManager:
 
 
     def insert_user(self, first_name, last_name, login, password):
-        user = User(first_name, last_name, login, password)
+        user = User(userFirstName=first_name, userLastName=last_name, userLogin=login, userPassword=password)
 
         db.session.add(user)
 

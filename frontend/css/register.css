@@ -6,6 +6,7 @@
     --white: #fff;
     --gray: rgb(101, 116, 139);
     --strong-blue: rgb(56, 50, 160);
+    --transparent-red: rgba(255, 0, 0, 0.8);
 }
 
 * {
@@ -116,4 +117,17 @@ html, body {
 
 .footer > a:hover {
     text-decoration: underline;
+}
+
+.flash {
+    display: none;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--transparent-red);
+    box-sizing: border-box;
+    padding: 16px 11px;
+    border-radius: 8px;
+    font-weight: 600;
 }
