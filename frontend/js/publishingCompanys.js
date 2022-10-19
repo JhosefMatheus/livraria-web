@@ -1,12 +1,12 @@
-import Book from "./classes/Book.js";
+import PublishingCompany from "./classes/PublishingCompany.js";
 import urlApi from "./config.js";
 
 const menuButton = document.getElementById("menu-button");
 const sideBar = document.getElementById("side-bar");
 let menuButtonFlag = "closed";
-const booksOption = document.getElementById("books-option");
-const booksIcon = document.getElementById("books-icon");
-const booksText = document.getElementById("books-text");
+const publishingCompanysOption = document.getElementById("publishing-companys-option");
+const publishingCompanysIcon = document.getElementById("publishing-companys-icon");
+const publishingCompanysText = document.getElementById("publishing-companys-text");
 const tableBody = document.querySelector("tbody");
 
 window.onload = async () => {
@@ -24,11 +24,11 @@ window.onload = async () => {
     if (tokenResponse.status === 403) {
         window.location = "./index.html";
     } else if (tokenResponse.status === 200) {
-        booksOption.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
-        booksIcon.style.fill = "rgb(16, 185, 129)";
-        booksText.style.color = "rgb(16, 185, 129)";
+        publishingCompanysOption.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+        publishingCompanysIcon.style.fill = "rgb(16, 185, 129)";
+        publishingCompanysText.style.color = "rgb(16, 185, 129)";
 
-        const booksResponse = await fetch(`${urlApi}/getBooks`, {
+        const publishingCompanysResponse = await fetch(`${urlApi}/getPublishingCompanys`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -37,27 +37,21 @@ window.onload = async () => {
             }
         });
 
-        const jsonBooks = await booksResponse.json()
+        const jsonPublishingCompanys = await publishingCompanysResponse.json();
 
-        jsonBooks.forEach(book => {
-            const newBook = new Book(...book);
+        jsonPublishingCompanys.forEach(publishingCompany => {
+            const newPublishingCompany = new PublishingCompany(...publishingCompany);
 
             const newRow = document.createElement("tr");
 
             const tdId = document.createElement("td");
-            const tdTitle = document.createElement("td");
-            const tdAuthorName = document.createElement("td");
-            const tdPublishingCompanyName = document.createElement("td");
+            const tdName = document.createElement("td");
 
-            tdId.innerHTML = newBook.id;
-            tdTitle.innerHTML = newBook.title;
-            tdAuthorName.innerHTML = newBook.authorName;
-            tdPublishingCompanyName.innerHTML = newBook.publishingCompanyName;
+            tdId.innerHTML = newPublishingCompany.id;
+            tdName.innerHTML = newPublishingCompany.name;
 
             newRow.appendChild(tdId);
-            newRow.appendChild(tdTitle);
-            newRow.appendChild(tdAuthorName);
-            newRow.appendChild(tdPublishingCompanyName);
+            newRow.appendChild(tdName);
 
             tableBody.appendChild(newRow);
         });

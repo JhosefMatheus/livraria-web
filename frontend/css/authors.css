@@ -140,7 +140,7 @@ html, body {
     margin: 25px;
 }
 
-.add-book-button {
+.add-author-button {
     margin: 25px;
     text-decoration: none;
     border-radius: 8px;
@@ -150,7 +150,7 @@ html, body {
     padding: 8px 20px;
 }
 
-.add-book-button:hover {
+.add-author-button:hover {
     background-color: var(--blue);
     transition: 0.5s;
 }

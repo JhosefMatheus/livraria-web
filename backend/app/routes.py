@@ -81,4 +81,47 @@ def token_verify():
 def get_books():
     books = dbManager.get_books()
 
-    return make_response(jsonify(books), 200)
+    json_data = []
+
+    for book in books:
+        current_author = dbManager.get_author_by_id(book.idAuthor)
+        current_publishing_company = dbManager.get_publishing_company_by_id(book.idPublishingCompany)
+
+        json_data.append({
+            "id": book.idBook,
+            "title": book.bookTitle,
+            "authorName": current_author.authorName,
+            "publishingCompanyName": current_publishing_company.publishingCompanyName
+        })
+
+    return make_response(jsonify(json_data), 200)
+
+
+@app.route("/getAuthors", methods=["GET"])
+def get_authors():
+    authors = dbManager.get_authors()
+
+    json_data = []
+
+    for author in authors:
+        json_data.append({
+            "id": author.idAuthor,
+            "name": author.authorName
+        })
+
+    return make_response(jsonify(json_data), 200)
+
+
+@app.route("/getPublishingCompanys", methods=["GET"])
+def get_publishing_companys():
+    publishing_companys = dbManager.get_publishing_companys()
+
+    json_data = []
+
+    for publishing_company in publishing_companys:
+        json_data.append({
+            "id": publishing_company.idPublishingCompany,
+            "name": publishingComapny.publishingCompanyName
+        })
+
+    return make_response(jsonify(json_data), 200)

@@ -36,3 +36,27 @@ class DBManager:
         books = Book.query.all()
 
         return books
+
+    
+    def get_author_by_id(self, author_id):
+        author = Author.query.get(author_id)
+
+        return author
+
+    
+    def get_publishing_company_by_id(self, publishing_company_id):
+        publishing_company = PublishingCompany.query.get(publishing_company_id)
+
+        return publishing_company
+
+
+    def get_authors(self):
+        authors = Author.query.all()
+
+        return authors
+
+
+    def get_publishing_companys(self):
+        publishing_companys = PublishingCompany.query.all()
+
+        return publishing_companys
