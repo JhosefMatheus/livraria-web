@@ -121,7 +121,20 @@ def get_publishing_companys():
     for publishing_company in publishing_companys:
         json_data.append({
             "id": publishing_company.idPublishingCompany,
-            "name": publishingComapny.publishingCompanyName
+            "name": publishing_company.publishingCompanyName
         })
 
     return make_response(jsonify(json_data), 200)
+
+
+@app.route("/addBook", methods=["POST"])
+def add_book():
+    req = request.get_json()
+
+    title = req["title"]
+    author = req["author"]
+    publishing_company = req["publishingCompany"]
+
+    dbManager.insert_book(title, author, publishing_company)
+
+    return make_response(jsonify({"message": "book added successfully."}), 200)
