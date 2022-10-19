@@ -40,7 +40,7 @@ window.onload = async () => {
         const jsonAuthors = await authorsResponse.json();
 
         jsonAuthors.forEach(author => {
-            const newAuthor = new Author(...author);
+            const newAuthor = new Author(author.id, author.name);
 
             const newRow = document.createElement("tr");
 

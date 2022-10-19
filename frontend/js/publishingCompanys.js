@@ -40,7 +40,7 @@ window.onload = async () => {
         const jsonPublishingCompanys = await publishingCompanysResponse.json();
 
         jsonPublishingCompanys.forEach(publishingCompany => {
-            const newPublishingCompany = new PublishingCompany(...publishingCompany);
+            const newPublishingCompany = new PublishingCompany(publishingCompany.id, publishingCompany.name);
 
             const newRow = document.createElement("tr");
 
