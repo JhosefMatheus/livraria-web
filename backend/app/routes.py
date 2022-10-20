@@ -138,3 +138,25 @@ def add_book():
     dbManager.insert_book(title, author, publishing_company)
 
     return make_response(jsonify({"message": "book added successfully."}), 200)
+
+
+@app.route("/addAuthor", methods=["POST"])
+def add_author():
+    req = request.get_json()
+
+    author = req["author"]
+
+    dbManager.insert_author(author)
+
+    return make_response(jsonify({"message": "author added successfully."}), 200)
+
+
+@app.route("/addPublishingCompany", methods=["POST"])
+def add_publishing_company():
+    req = request.get_json()
+
+    publishing_company = req["publishingCompany"]
+
+    dbManager.insert_publishing_company(publishing_company)
+
+    return make_response(jsonify({"message": "publishing company added successfully."}), 200)

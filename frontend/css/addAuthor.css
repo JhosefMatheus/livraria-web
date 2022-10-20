@@ -9,6 +9,7 @@
     --gray: rgb(107, 114, 128);
     --strong-gray: rgb(55, 65, 81);
     --light-white: rgb(243, 244, 246);
+    --transparent-red: rgba(255, 0, 0, 0.8);
 }
 
 * {
@@ -115,19 +116,6 @@ html, body {
     fill: var(--light-gray);
 }
 
-.search-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.search-icon > svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--gray);
-}
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -140,85 +128,61 @@ html, body {
     margin: 25px;
 }
 
-.add-author-button {
-    margin: 25px;
-    text-decoration: none;
-    border-radius: 8px;
-    background-color: var(--light-blue);
-    color: var(--white);
-    font-weight: 600;
-    padding: 8px 20px;
-}
-
-.add-author-button:hover {
-    background-color: var(--blue);
-    transition: 0.5s;
-}
-
-.search-bar {
-    margin: 25px;
-    box-shadow: rgb(100 116 139 / 12%) 0px 1px 4px;
-    padding: 25px;
-    border-radius: 8px;
-}
-
-.search-field {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid var(--light-gray);
-    max-width: 500px;
-    border-radius: 8px;
-    cursor: text;
-}
-
-.search-input {
-    padding: 16px 14px 16px 0;
-    border: none;
-    margin-right: 5px;
-    width: 100%;
-}
-
-.table {
+form {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
-    align-content: space-around;
-    margin: 25px;
-    box-shadow: rgb(100 116 139 / 12%) 0px 1px 4px;
-    border-radius: 8px;
-    overflow: auto;
+    box-sizing: border-box;
+    padding: 25px;
+    width: 50%;
 }
 
-.table > table {
-    border-collapse: collapse;
+.flash {
+    display: none;
+    margin-bottom: 20px;
     width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.table > table > thead > tr {
-    background-color: var(--light-white);
-    color: var(--strong-gray);
-    text-align: left;
-    font-weight: 600;
-}
-
-.table > table > thead > tr > th, .table > table > tbody > tr > td {
-    padding: 16px;
-}
-
-.see-more-author-button {
-    text-decoration: none;
-    border-radius: 8px;
-    background-color: var(--light-blue);
+    text-align: center;
     color: var(--white);
+    background-color: var(--transparent-red);
+    box-sizing: border-box;
+    padding: 16px 11px;
+    border-radius: 8px;
     font-weight: 600;
+    margin-left: 15px;
+}
+
+form > input {
+    margin: 5px;
+    width: 100%;
+    padding: 16px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--light-gray);
+}
+
+form > input:focus {
+    outline: 2px solid var(--light-blue);
+    border: 1px solid transparent;
+}
+
+.register-options {
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.register-options > .register-button {
+    color: var(--white);
+    text-decoration: none;
+    background-color: var(--light-blue);
+    border-radius: 8px;
     padding: 8px 20px;
 }
 
-.see-more-author-button:hover {
+.register-options > .register-button:hover {
     background-color: var(--blue);
-    transition: 0.5s;
+    transition: 0.2s;
 }

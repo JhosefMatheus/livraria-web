@@ -1,3 +1,5 @@
+import urlApi from "./config.js";
+
 const inputs = document.getElementsByTagName("input");
 const loginInput = document.getElementById("login");
 const passwordInput = document.getElementById("password");

@@ -49,16 +49,26 @@ window.onload = async () => {
             const tdTitle = document.createElement("td");
             const tdAuthorName = document.createElement("td");
             const tdPublishingCompanyName = document.createElement("td");
+            
+            const tdButton = document.createElement("td");
+
+            const button = document.createElement("a");
+
+            button.innerHTML = "See more";
+            button.className = "see-more-book-button";
+            button.href = `./book?id=${newBook.id}`;
 
             tdId.innerHTML = newBook.id;
             tdTitle.innerHTML = newBook.title;
             tdAuthorName.innerHTML = newBook.authorName;
             tdPublishingCompanyName.innerHTML = newBook.publishingCompanyName;
+            tdButton.appendChild(button);
 
             newRow.appendChild(tdId);
             newRow.appendChild(tdTitle);
             newRow.appendChild(tdAuthorName);
             newRow.appendChild(tdPublishingCompanyName);
+            newRow.appendChild(tdButton);
 
             tableBody.appendChild(newRow);
         });

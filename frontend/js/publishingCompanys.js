@@ -46,12 +46,22 @@ window.onload = async () => {
 
             const tdId = document.createElement("td");
             const tdName = document.createElement("td");
+            
+            const tdButton = document.createElement("td");
+
+            const button = document.createElement("a");
+
+            button.innerHTML = "See more";
+            button.className = "see-more-publishing-company-button";
+            button.href = `./publishingCompany?id=${newPublishingCompany.id}`;
 
             tdId.innerHTML = newPublishingCompany.id;
             tdName.innerHTML = newPublishingCompany.name;
+            tdButton.appendChild(button);
 
             newRow.appendChild(tdId);
             newRow.appendChild(tdName);
+            newRow.appendChild(tdButton);
 
             tableBody.appendChild(newRow);
         });

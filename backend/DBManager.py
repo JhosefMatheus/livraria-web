@@ -105,3 +105,29 @@ class DBManager:
         db.session.add(new_book)
 
         db.session.commit()
+
+    
+    def insert_author(self, author):
+        authors = self.get_authors()
+
+        author_verify = any(list(map(lambda current_author: current_author.authorName == author, authors)))
+
+        if not author_verify:
+            new_author = Author(authorName=author)
+
+            db.session.add(new_author)
+
+            db.session.commit()
+
+    
+    def insert_publishing_company(self, publishing_company):
+        publishing_companys = self.get_publishing_companys()
+
+        publishing_companys_verify = any(list(map(lambda current_publishing_company: current_publishing_company.publishingCompanyName == publishing_company, publishing_companys)))
+
+        if not publishing_companys_verify:
+            new_publishing_company = PublishingCompany(publishingCompanyName=publishing_company)
+
+            db.session.add(new_publishing_company)
+
+            db.session.commit()
