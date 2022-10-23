@@ -10,6 +10,7 @@ const booksOption = document.getElementById("books-option");
 const booksIcon = document.getElementById("books-icon");
 const booksText = document.getElementById("books-text");
 const tableBody = document.querySelector("tbody");
+const searchInput = document.getElementById("search-input");
 
 window.onload = async () => {
     const token = localStorage.getItem("token");
@@ -39,7 +40,7 @@ window.onload = async () => {
             }
         });
 
-        const jsonBooks = await booksResponse.json()
+        const jsonBooks = await booksResponse.json();
 
         jsonBooks.forEach(book => {
 
@@ -54,25 +55,49 @@ window.onload = async () => {
             const tdAuthorName = document.createElement("td");
             const tdPublishingCompanyName = document.createElement("td");
             
-            const tdButton = document.createElement("td");
+            const tdMoreButton = document.createElement("td");
+            const tdDeleteButton = document.createElement("td");
 
-            const button = document.createElement("a");
+            const moreButton = document.createElement("a");
+            const deleteButton = document.createElement("button");
 
-            button.innerHTML = "See more";
-            button.className = "see-more-book-button";
-            button.href = `./book.html?id=${newBook.id}`;
+            moreButton.innerHTML = "See more";
+            moreButton.className = "see-more-book-button";
+            moreButton.href = `./book.html?id=${newBook.id}`;
+
+            deleteButton.innerHTML = "Delete";
+            deleteButton.className = "delete-button";
+            deleteButton.addEventListener("click", async () => {
+                const data = {
+                    id: newBook.id
+                }
+
+                const deleteBookResponse = await fetch(`${urlApi}/deleteBook`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                window.location.reload();
+            });
 
             tdId.innerHTML = newBook.id;
             tdTitle.innerHTML = newBook.title;
             tdAuthorName.innerHTML = newBook.authorName;
             tdPublishingCompanyName.innerHTML = newBook.publishingCompanyName;
-            tdButton.appendChild(button);
+            tdMoreButton.appendChild(moreButton);
+            tdDeleteButton.appendChild(deleteButton);
 
             newRow.appendChild(tdId);
             newRow.appendChild(tdTitle);
             newRow.appendChild(tdAuthorName);
             newRow.appendChild(tdPublishingCompanyName);
-            newRow.appendChild(tdButton);
+            newRow.appendChild(tdMoreButton);
+            newRow.appendChild(tdDeleteButton);
 
             tableBody.appendChild(newRow);
         });
@@ -86,5 +111,132 @@ menuButton.addEventListener("click", () => {
     } else {
         sideBar.style.display = "none";
         menuButtonFlag = "closed";
+    }
+});
+
+searchInput.addEventListener("change", (e) => {
+    const search = e.target.value;
+
+    if (search.length === 0) {
+        while (tableBody.firstElementChild) {
+            tableBody.removeChild(tableBody.firstElementChild);
+        }
+
+        books.forEach(book => {
+            const newRow = document.createElement("tr");
+
+            const tdId = document.createElement("td");
+            const tdTitle = document.createElement("td");
+            const tdAuthorName = document.createElement("td");
+            const tdPublishingCompanyName = document.createElement("td");
+            
+            const tdMoreButton = document.createElement("td");
+            const tdDeleteButton = document.createElement("td");
+
+            const moreButton = document.createElement("a");
+            const deleteButton = document.createElement("button");
+
+            moreButton.innerHTML = "See more";
+            moreButton.className = "see-more-book-button";
+            moreButton.href = `./book.html?id=${book.id}`;
+
+            deleteButton.innerHTML = "Delete";
+            deleteButton.className = "delete-button";
+            deleteButton.addEventListener("click", async () => {
+                const data = {
+                    id: book.id
+                }
+
+                const deleteBookResponse = await fetch(`${urlApi}/deleteBook`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                window.location.reload();
+            });
+
+            tdId.innerHTML = book.id;
+            tdTitle.innerHTML = book.title;
+            tdAuthorName.innerHTML = book.authorName;
+            tdPublishingCompanyName.innerHTML = book.publishingCompanyName;
+            tdMoreButton.appendChild(moreButton);
+            tdDeleteButton.appendChild(deleteButton);
+
+            newRow.appendChild(tdId);
+            newRow.appendChild(tdTitle);
+            newRow.appendChild(tdAuthorName);
+            newRow.appendChild(tdPublishingCompanyName);
+            newRow.appendChild(tdMoreButton);
+            newRow.appendChild(tdDeleteButton);
+
+            tableBody.appendChild(newRow);
+        });
+
+    } else {
+        const searchResult = books.filter(book => book.title.toLowerCase().includes(search));
+
+        while (tableBody.firstElementChild) {
+            tableBody.removeChild(tableBody.firstElementChild);
+        }
+
+        searchResult.forEach(book => {
+            const newRow = document.createElement("tr");
+
+            const tdId = document.createElement("td");
+            const tdTitle = document.createElement("td");
+            const tdAuthorName = document.createElement("td");
+            const tdPublishingCompanyName = document.createElement("td");
+            
+            const tdMoreButton = document.createElement("td");
+            const tdDeleteButton = document.createElement("td");
+
+            const moreButton = document.createElement("a");
+            const deleteButton = document.createElement("button");
+
+            moreButton.innerHTML = "See more";
+            moreButton.className = "see-more-book-button";
+            moreButton.href = `./book.html?id=${book.id}`;
+
+            deleteButton.innerHTML = "Delete";
+            deleteButton.className = "delete-button";
+            deleteButton.addEventListener("click", async () => {
+                const data = {
+                    id: book.id
+                }
+
+                const deleteBookResponse = await fetch(`${urlApi}/deleteBook`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                window.location.reload();
+            });
+
+            tdId.innerHTML = book.id;
+            tdTitle.innerHTML = book.title;
+            tdAuthorName.innerHTML = book.authorName;
+            tdPublishingCompanyName.innerHTML = book.publishingCompanyName;
+            tdMoreButton.appendChild(moreButton);
+            tdDeleteButton.appendChild(deleteButton);
+
+            newRow.appendChild(tdId);
+            newRow.appendChild(tdTitle);
+            newRow.appendChild(tdAuthorName);
+            newRow.appendChild(tdPublishingCompanyName);
+            newRow.appendChild(tdMoreButton);
+            newRow.appendChild(tdDeleteButton);
+
+            tableBody.appendChild(newRow);
+        });
     }
 });

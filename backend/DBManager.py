@@ -173,3 +173,11 @@ class DBManager:
             current_publishing_company.publishingCompanyName = publishing_company_name
 
         db.session.commit()
+
+    
+    def delete_book(self, book_id):
+        current_book = Book.query.get(book_id)
+
+        db.session.delete(current_book)
+
+        db.session.commit()

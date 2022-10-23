@@ -259,4 +259,15 @@ def edit_publishing_company():
 
     dbManager.update_publishing_company(publishing_company_id, publishing_company_name)
 
-    return make_response(jsonify({"message": "publishing company udated succesfully."}), 200)
+    return make_response(jsonify({"message": "publishing company udated successfully."}), 200)
+
+
+@app.route("/deleteBook", methods=["POST"])
+def delete_book():
+    req = request.get_json()
+
+    book_id = req["id"]
+
+    dbManager.delete_book(book_id)
+
+    return make_response(jsonify({"message": "book deleted successfully."}), 200)
