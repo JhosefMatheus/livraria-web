@@ -160,3 +160,103 @@ def add_publishing_company():
     dbManager.insert_publishing_company(publishing_company)
 
     return make_response(jsonify({"message": "publishing company added successfully."}), 200)
+
+
+@app.route("/getBook", methods=["POST"])
+def get_book():
+    req = request.get_json()
+
+    book_id = req["id"]
+
+    book = dbManager.get_book_by_id(book_id)
+
+    if book is not None:
+        current_author = dbManager.get_author_by_id(book.idAuthor)
+        current_publishing_company = dbManager.get_publishing_company_by_id(book.idPublishingCompany)
+
+        json_data = {
+            "id": book.idBook,
+            "title": book.bookTitle,
+            "authorName": current_author.authorName,
+            "publishingCompanyName": current_publishing_company.publishingCompanyName 
+        }
+
+        return make_response(jsonify(json_data), 200)
+
+    return make_response(jsonify({"message": "invalid book id."}), 500)
+
+
+@app.route("/getAuthor", methods=["POST"])
+def get_author():
+    req = request.get_json()
+
+    author_id = req["id"]
+
+    author = dbManager.get_author_by_id(author_id)
+
+    if author is not None:
+        json_data = {
+            "id": author.idAuthor,
+            "name": author.authorName
+        }
+
+        return make_response(jsonify(json_data), 200)
+
+    return make_response(jsonify({"message": "invalid author id"}), 500)
+
+
+@app.route("/getPublishingCompany", methods=["POST"])
+def get_publishing_company():
+    req = request.get_json()
+
+    publishing_company_id = req["id"]
+
+    publishing_company = dbManager.get_publishing_company_by_id(publishing_company_id)
+
+    if publishing_company is not None:
+        josn_data = {
+            "id": publishing_company.idPublishingCompany,
+            "name": publishing_company.publishingCompanyName
+        }
+
+        return make_response(jsonify(josn_data), 200)
+
+    return make_response(jsonify({"message": "invalid publishing company id"}), 500)
+
+
+@app.route("/editBook", methods=["POST"])
+def edit_book():
+    req = request.get_json()
+
+    book_id = req["id"]
+    book_title = req["title"]
+    author_name = req["author"]
+    publishing_company_name = req["publishingCompany"]
+
+    dbManager.update_book(book_id, book_title, author_name, publishing_company_name)
+
+    return make_response(jsonify({"message": "book updated successfully."}), 200)
+
+
+@app.route("/editAuthor", methods=["POST"])
+def edit_author():
+    req = request.get_json()
+
+    author_id = req["id"]
+    author_name = req["name"]
+
+    dbManager.update_author(author_id, author_name)
+
+    return make_response(jsonify({"message": "author updated successfully."}), 200)
+
+
+@app.route("/editPublishingCompany", methods=["POST"])
+def edit_publishing_company():
+    req = request.get_json()
+
+    publishing_company_id = req["id"]
+    publishing_company_name = req["name"]
+
+    dbManager.update_publishing_company(publishing_company_id, publishing_company_name)
+
+    return make_response(jsonify({"message": "publishing company udated succesfully."}), 200)

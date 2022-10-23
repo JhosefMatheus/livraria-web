@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/author.css">
+</head>
+<body>
+    <div class="main">
+        <div class="side-bar" id="side-bar">
+            <ul class="options">
+                <li class="option" id="books-option">
+                    <a href="./books.html">
+                        <span class="books-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="books-icon">
+                                <path d="M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z"></path>
+                            </svg>
+                        </span>
+                        <span id="books-text">Books</span>
+                    </a>
+                </li>
+                <li class="option" id="authors-option">
+                    <a href="./authors.html">
+                        <span class="authors-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M15 11h7v2h-7zm1 4h6v2h-6zm-2-8h8v2h-8zM4 19h10v-1c0-2.757-2.243-5-5-5H7c-2.757 0-5 2.243-5 5v1h2zm4-7c1.995 0 3.5-1.505 3.5-3.5S9.995 5 8 5 4.5 6.505 4.5 8.5 6.005 12 8 12z"></path>
+                            </svg>
+                        </span>
+                        <span>Authors</span>
+                    </a>
+                </li>
+                <li class="option" id="publishing-companys-option">
+                    <a href="./publishingCompanys.html">
+                        <span class="publishing-companys-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M6.012 18H21V4a2 2 0 0 0-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1zM8 6h9v2H8V6z"></path>
+                            </svg>
+                        </span>
+                        <span>Publishing Companys</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="bar">
+                <div class="menu-icon" id="menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <form>
+                <div class="flash">
+                    <span class="flash-message"></span>
+                </div>
+
+                <div class="author-field">
+                    <span>Author: </span>
+                    <input type="text" name="author" id="author" readonly="true">
+                </div>
+            </form>
+
+            <section class="edit-author-options">
+                <div class="edit-options">
+                    <button id="edit-button" class="edit-button">Edit</button>
+                </div>
+
+                <div class="confirm-cancel-options">
+                    <button id="cancel-button" class="cancel-button">Cancel</button>
+                    <a id="confirm-button" class="confirm-button" href="./authors.html">Confirm</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../js/author.js" type="module"></script>
+</body>
+</html>

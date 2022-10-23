@@ -131,3 +131,45 @@ class DBManager:
             db.session.add(new_publishing_company)
 
             db.session.commit()
+
+    
+    def get_book_by_id(self, book_id):
+        book = Book.query.get(book_id)
+
+        return book
+
+    
+    def update_book(self, book_id, book_title, author_name, publishing_company_name):
+        current_book = Book.query.get(book_id)
+        
+        current_author = Author.query.get(current_book.idAuthor)
+        current_publishing_company = PublishingCompany.query.get(current_book.idPublishingCompany)
+
+        if current_book.bookTitle != book_title:
+            current_book.bookTitle = book_title
+
+        if current_author.authorName != author_name:
+            current_author.authorName = author_name
+
+        if current_publishing_company.publishingCompanyName != publishing_company_name:
+            current_publishing_company.publishingCompanyName = publishing_company_name
+
+        db.session.commit()
+
+    
+    def update_author(self, author_id, author_name):
+        current_author = Author.query.get(author_id)
+
+        if current_author.authorName != author_name:
+            current_author.authorName = author_name
+
+        db.session.commit()
+
+
+    def update_publishing_company(self, publishing_company_id, publishing_company_name):
+        current_publishing_company = PublishingCompany.query.get(publishing_company_id)
+
+        if current_publishing_company.publishingCompanyName != publishing_company_name:
+            current_publishing_company.publishingCompanyName = publishing_company_name
+
+        db.session.commit()

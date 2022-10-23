@@ -1,6 +1,8 @@
 import Book from "./classes/Book.js";
 import urlApi from "./config.js";
 
+const books = [];
+
 const menuButton = document.getElementById("menu-button");
 const sideBar = document.getElementById("side-bar");
 let menuButtonFlag = "closed";
@@ -43,6 +45,8 @@ window.onload = async () => {
 
             const newBook = new Book(book.id, book.title, book.authorName, book.publishingCompanyName);
 
+            books.push(newBook);
+
             const newRow = document.createElement("tr");
 
             const tdId = document.createElement("td");
@@ -56,7 +60,7 @@ window.onload = async () => {
 
             button.innerHTML = "See more";
             button.className = "see-more-book-button";
-            button.href = `./book?id=${newBook.id}`;
+            button.href = `./book.html?id=${newBook.id}`;
 
             tdId.innerHTML = newBook.id;
             tdTitle.innerHTML = newBook.title;

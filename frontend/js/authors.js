@@ -53,7 +53,7 @@ window.onload = async () => {
 
             button.innerHTML = "See more";
             button.className = "see-more-author-button";
-            button.href = `./author?id=${newAuthor.id}`;
+            button.href = `./author.html?id=${newAuthor.id}`;
 
             tdId.innerHTML = newAuthor.id;
             tdName.innerHTML = newAuthor.name;

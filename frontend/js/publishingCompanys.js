@@ -53,7 +53,7 @@ window.onload = async () => {
 
             button.innerHTML = "See more";
             button.className = "see-more-publishing-company-button";
-            button.href = `./publishingCompany?id=${newPublishingCompany.id}`;
+            button.href = `./publishingCompany.html?id=${newPublishingCompany.id}`;
 
             tdId.innerHTML = newPublishingCompany.id;
             tdName.innerHTML = newPublishingCompany.name;
